@@ -22,28 +22,32 @@ PrivilegesRequired=admin
 DisableWelcomePage=no
 
 [Languages]
-Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "portuguese"; MessagesFile: "compiler:Languages\\Portuguese.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "Criar atalho na área de trabalho"; GroupDescription: "Atalhos adicionais"; Flags: unchecked
 
 [Files]
-Source: "D:\Python\Agenda_comp_pro\dist\AgendaCompPro.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MySourceDir}*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\config"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\models"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\services"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\ui"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\utils"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\templates"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\reports"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MySourceDir}*"; DestDir: "{app}\backups"; Flags: ignoreversion recursesubdirs createallsubdirs
+; Executável final
+Source: "{#MySourceDir}\\dist\\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+
+; Apenas pastas importantes do projeto (copiadas como estão no projeto real)
+Source: "{#MySourceDir}\\assets\\*"; DestDir: "{app}\\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MySourceDir}\\gui\\*"; DestDir: "{app}\\gui"; Flags: ignoreversion recursesubdirs createallsubdirs
+
+; Arquivos principais do projeto
+Source: "{#MySourceDir}\\AgendaCompPro.py"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\\config.py"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\\models.py"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\\services.py"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\\utils.py"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\\main.py"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{group}\Desinstalar {#MyAppName}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{group}\\{#MyAppName}"; Filename: "{app}\\{#MyAppExeName}"
+Name: "{group}\\Desinstalar {#MyAppName}"; Filename: "{uninstallexe}"
+Name: "{autodesktop}\\{#MyAppName}"; Filename: "{app}\\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "Executar {#MyAppName}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\\{#MyAppExeName}"; Description: "Executar {#MyAppName}"; Flags: nowait postinstall skipifsilent

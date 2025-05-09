@@ -1,11 +1,13 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-
 a = Analysis(
-    ['AgendaCompPro.py'],
+    ['main.py'],  # <--- Aqui você troca AgendaCompPro.py por main.py
     pathex=[],
     binaries=[],
-    datas=[('assets/agenda.ico', 'assets'), ('assets/logo.png', 'assets')],
+    datas=[
+        ('assets/agenda.ico', 'assets'),
+        ('assets/logo.png', 'assets')
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -14,6 +16,7 @@ a = Analysis(
     noarchive=False,
     optimize=0,
 )
+
 pyz = PYZ(a.pure)
 
 exe = EXE(
@@ -35,5 +38,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['assets\\agenda.ico'],
+    icon='assets/agenda.ico'  # <--- Corrigido caminho (string direta, não lista)
 )
