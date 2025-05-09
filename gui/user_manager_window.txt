@@ -113,7 +113,7 @@ class UserManagerWindow:
             if not selected_items:
                 messagebox.showwarning("Ação Requerida", "Por favor, selecione um usuário para editar.", parent=self.window)
                 return
-            selected_username = selected_items[0] # iid é o username
+            selected_username = self.user_list_treeview.item(selected_items[0])['iid'] # iid é o username
             if selected_username not in self.users_data:
                 messagebox.showerror("Erro Interno", "Usuário selecionado não encontrado nos dados.", parent=self.window)
                 return
@@ -244,7 +244,7 @@ class UserManagerWindow:
             messagebox.showwarning("Ação Requerida", "Selecione um usuário para alterar a senha.", parent=self.window)
             return
         
-        username_to_change_pass = selected_items[0]
+        username_to_change_pass = self.user_list_treeview.item(selected_items[0])['iid']
         if username_to_change_pass not in self.users_data: # Sanity check
             messagebox.showerror("Erro Interno", "Usuário selecionado não encontrado.", parent=self.window)
             return
@@ -302,7 +302,7 @@ class UserManagerWindow:
             messagebox.showwarning("Ação Requerida", "Selecione um usuário para remover.", parent=self.window)
             return
         
-        username_to_delete = selected_items[0]
+        username_to_delete = self.user_list_treeview.item(selected_items[0])['iid']
 
         if username_to_delete == 'admin': # Restrição fundamental
             messagebox.showerror("Operação Não Permitida", "O usuário 'admin' principal não pode ser removido.", parent=self.window)
