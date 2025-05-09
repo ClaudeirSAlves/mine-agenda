@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['main.py'],
+    ['AgendaCompPro.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('assets/agenda.ico', 'assets'), ('assets/logo.png', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='main',
+    name='AgendaCompPro',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
